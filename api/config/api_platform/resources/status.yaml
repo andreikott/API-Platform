@@ -1,0 +1,8 @@
+resources:
+
+  App\Entity\Status:
+    itemOperations:
+      get: ~
+      put: ~
+    collectionOperations:
+      get: ~

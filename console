@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+docker-compose exec php bin/console "$@"
+
+if ! [ -n "$(find api/src -user "$(id -u)" -print -prune -o -prune)" ]; then
+    echo "Ownership for directory api/src was changed."
+    sudo chown -R "$(whoami)":"$(whoami)" api/src
+fi

@@ -1,0 +1,47 @@
+parameters:
+    # Adds a fallback VARNISH_URL if the env var is not set.
+    # This allows you to run cache:warmup even if your
+    # environment variables are not available yet.
+    # You should not need to change this value.
+    env(VARNISH_URL): ''
+
+api_platform:
+    eager_loading:
+        force_eager: false
+    allow_plain_identifiers: true # allow to send id`s by number
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity', '%kernel.project_dir%/config/api_platform/resources']
+    title: RentCRM API
+    version: 1.0.0
+    # Enable the Varnish integration
+    http_cache:
+        invalidation:
+            enabled: true
+            varnish_urls: ['%env(VARNISH_URL)%']
+        max_age: 0
+        shared_max_age: 3600
+        vary: ['Content-Type', 'Authorization']
+        public: true
+
+    formats:
+        json:
+            mime_types: ['application/json']
+        jsonld:
+            mime_types: ['application/ld+json']
+        html:
+            mime_types: ['text/html']
+
+    collection:
+        pagination:
+            items_per_page: 30
+            client_items_per_page: true
+            items_per_page_parameter_name: items
+
+    swagger:
+         api_keys:
+             apiKey:
+                name: Authorization
+                type: header
+
+    exception_to_status:
+        libphonenumber\NumberParseException: 400

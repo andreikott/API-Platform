@@ -1,0 +1,25 @@
+resources:
+
+  App\Entity\Request:
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~
+    collectionOperations:
+      get: ~
+      post: ~
+      api_requests_filters:
+        method: get
+        path: '/calendar'
+        controller: App\Controller\CalendarController::calendar
+        swagger_context:
+          summary: Request's filters.
+          description: Filter requests by keys
+          parameters:
+            - {in: query, name: cancelled, type: boolean}
+            - {in: query, name: unpaid,    type: boolean}
+            - {in: query, name: overdue,   type: boolean}
+            - {in: query, name: fridaySaturday, type: boolean}
+            - {in: query, name: saturdaySunday, type: boolean}
+            - {in: query, name: client, type: integer, description: Client ID}
+            - {in: query, name: user,   type: integer, description: User ID}

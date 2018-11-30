@@ -1,0 +1,10 @@
+resources:
+
+  App\Entity\Company:
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~
+    collectionOperations:
+      get: ~
+      post: ~

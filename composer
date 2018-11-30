@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker-compose exec php composer "$@"
+
+echo "Fixing permissions."
+sudo chown -R "$(whoami)":"$(whoami)" api/config
+echo "OK"

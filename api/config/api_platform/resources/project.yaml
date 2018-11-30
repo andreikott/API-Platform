@@ -1,0 +1,17 @@
+resources:
+
+  App\Entity\Project:
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~
+      api_projects_make_request:
+        method: get
+        path: '/projects/create/{id}/request'
+        controller: App\Controller\ProjectController
+        swagger_context:
+          summary: Request to Project transformer.
+          description: Trasform data from Request to Project
+    collectionOperations:
+      get: ~
+      post: ~

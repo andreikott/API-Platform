@@ -1,0 +1,27 @@
+resources:
+
+  App\Entity\Client:
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~
+    collectionOperations:
+      get: ~
+      post: ~
+      api_clients_add:
+        method: post
+        path: '/clients/create'
+        controller: App\Controller\ClientController
+        swagger_context:
+          summary: Creates a Client resource.
+          description: The new Client resource
+          parameters:
+            -
+               in: body
+               schema:
+                   type: object
+                   properties:
+                       name: {type: string}
+                       email: {type: string}
+                       phone: {type: string}
+                       description: {type: string}

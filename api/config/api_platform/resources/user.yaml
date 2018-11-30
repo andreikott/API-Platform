@@ -1,0 +1,29 @@
+resources:
+
+  App\Entity\User:
+    itemOperations:
+      get: ~
+      put: ~
+      delete: ~
+    collectionOperations:
+      get: ~
+      post: ~
+      api_users_registration:
+          method: post
+          path: '/register'
+          controller: App\Controller\UserController
+          swagger_context:
+              summary: Creates a Company and User.
+              description: The new Company and User
+              parameters:
+              -
+                  in: body
+                  schema:
+                      type: object
+                      properties:
+                          username: {type: string}
+                          email: {type: string}
+                          password: {type: string}
+                          address: {type: string}
+                          phone: {type: string}
+                          companyName: {type: string}
